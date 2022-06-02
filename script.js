@@ -1,5 +1,9 @@
 let calculator = new Calculator()
+let buttons = document.querySelectorAll('button');
 
+// buttons.item(0).addEventListener('click', () => {
+//     console.log(buttons.item(0));
+// });
 function Calculator() {
   this.methods = {
     "-": (a, b) => a - b,

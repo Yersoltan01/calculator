@@ -27,7 +27,7 @@
   font-family: 'digital-7_monomono';
   border-radius: 10px;
   border: 1px solid #4e4e4e;
-  width: 230px;
+  width: 310px;
   height: 70px;
   background-color: #bcd1bf;
 }
@@ -50,9 +50,14 @@ button {
   background-color: #f79700;
 }
 
-#button-delete {
-  height: 70px;
+#button-clear {
+  width: 150px;
   background-color: #e2344b;
+}
+
+#button-delete {
+  width: 150px;
+  background-color: #A3ADDE;
 }
 
 @font-face {
