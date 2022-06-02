@@ -28,8 +28,20 @@
   border-radius: 10px;
   border: 1px solid #4e4e4e;
   width: 310px;
-  height: 70px;
+  min-height: 100px;
   background-color: #bcd1bf;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 10px 20px;
+}
+
+.last-input {
+  font-size: 24px;
+}
+
+.current-input {
+  font-size: 32px;
 }
 
 button {

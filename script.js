@@ -1,5 +1,7 @@
-let calculator = new Calculator()
+let calculator = new Calculator();
 let buttons = document.querySelectorAll('button');
+let currentInput = document.querySelector('.current-input');
+let lastInput = document.querySelector('.last-input');
 
 // buttons.item(0).addEventListener('click', () => {
 //     console.log(buttons.item(0));
