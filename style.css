@@ -46,11 +46,11 @@ button {
   align-items: center;
 }
 
-#equal {
+#button-equal {
   background-color: #f79700;
 }
 
-#delete-button {
+#button-delete {
   height: 70px;
   background-color: #e2344b;
 }
@@ -61,5 +61,4 @@ button {
        url('fonts/digital-7_mono-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
