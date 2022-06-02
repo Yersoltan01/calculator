@@ -46,8 +46,13 @@ button {
   align-items: center;
 }
 
+#equal {
+  background-color: #f79700;
+}
+
 #delete-button {
-    margin-top: 5px;
+  height: 70px;
+  background-color: #e2344b;
 }
 
 @font-face {
