@@ -12,7 +12,6 @@
 }
 
 .calculator {
-  font-size: 24px;
   border-radius: 10px;
   box-sizing: border-box;
   background-color: #575757;
@@ -34,23 +33,25 @@
   background-color: #bcd1bf;
 }
 
-.button {
+button {
   box-sizing: border-box;
-  border-radius: 35px;
-  border: 1px solid #4e4e4e;
-  background-color: #ececec;
+  font-size: 20px;
   width: 70px;
   height: 70px;
+  background-color: #ececec;
+  border: 1px solid #4e4e4e;
+  border-radius: 33px 33px;
+  cursor:pointer;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
 }
 
 @font-face {
-    font-family: 'digital-7_monomono';
-    src: url('fonts/digital-7_mono-webfont.woff2') format('woff2'),
-         url('fonts/digital-7_mono-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'digital-7_monomono';
+  src: url('fonts/digital-7_mono-webfont.woff2') format('woff2'),
+       url('fonts/digital-7_mono-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 
 }
