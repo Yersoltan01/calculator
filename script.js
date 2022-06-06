@@ -26,6 +26,9 @@ function updateCurrentInput(inputValue) {
   if (newOperation == 1) {
     input = '';
     newOperation = 0;
+    if (inputValue == '.') {
+        input = '0';
+    }
   }
   input += inputValue;
   currentInput.textContent = input;
@@ -33,6 +36,7 @@ function updateCurrentInput(inputValue) {
 
 function updateLastInput(inputValue) {
   lastInput.textContent = currentInput.textContent + inputValue;
+  currentInput.textContent = '';
   newOperation = 1;
 }
 
@@ -91,14 +95,12 @@ buttons.item(14).addEventListener('click', () => {
   updateCurrentInput(buttons.item(14).value);
 });
 buttons.item(15).addEventListener('click', () => {
+  if (!currentInput.textContent.includes(buttons.item(15).value)) {
+    updateCurrentInput(buttons.item(15).value);
+  }
 });
 buttons.item(16).addEventListener('click', () => {
   updateLastInput(buttons.item(16).value);
 });
 buttons.item(17).addEventListener('click', () => {
 });
-
-
-/*
-    если ласт оперейтион есть то при новой операции запускать калькулейт 
-*/
