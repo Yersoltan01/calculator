@@ -4,40 +4,81 @@ let currentInput = document.querySelector('.current-input');
 let lastInput = document.querySelector('.last-input');
 let input = '';
 let newOperation = 1;
+let equalPressed = 0;
 
 function Calculator() {
   this.methods = {
-    "-": (a, b) => a - b,
-    "+": (a, b) => a + b,
-    "*": (a, b) => a * b,
-    "/": (a, b) => a / b,
+    "-": (a, b) => Number.isInteger(a - b) ? a - b : (a - b).toFixed(3),
+    "+": (a, b) => Number.isInteger(a + b) ? a + b : (a + b).toFixed(3),
+    "*": (a, b) => Number.isInteger(a * b) ? a * b : (a * b).toFixed(3),
+    "/": (a, b) => Number.isInteger(a / b) ? a / b : (a / b).toFixed(3),
   };
 
-  this.calculate = function(str) {
-    let split = str.split(' '),
-    a = +split[0],
-    op = split[1],
-    b = +split[2]
-    return this.methods[op](a, b);
+  this.calculate = function(str, operation) {
+    if (operation == '-' && str[0] == '-') {
+      let split = str.slice(1).split(`${operation}`);
+      let a = (+split[0]) * -1;
+      let op = operation;
+      let b = +split[1];
+      return this.methods[op](a, b);
+    }
+    else {
+      let split = str.split(`${operation}`);
+      let a = +split[0];
+      let op = operation;
+      let b = +split[1];
+      if (operation == '/' && b == 0) {
+        alert("Error. Cannot divide by 0");
+        document. location. reload();
+      }
+      return this.methods[op](a, b);
+    }
   }
 }
 
 function updateCurrentInput(inputValue) {
+  if (equalPressed == 1) {
+    return;
+  }
   if (newOperation == 1) {
     input = '';
     newOperation = 0;
-    if (inputValue == '.') {
-        input = '0';
-    }
+  }
+  if (inputValue == '.' && currentInput.textContent == '') {
+      input = '0';
   }
   input += inputValue;
   currentInput.textContent = input;
 }
 
 function updateLastInput(inputValue) {
-  lastInput.textContent = currentInput.textContent + inputValue;
-  currentInput.textContent = '';
-  newOperation = 1;
+  if (inputValue == '=' && currentInput.textContent != '' && lastInput.textContent != '') {
+    let calculation = lastInput.textContent.concat(currentInput.textContent);
+    lastInput.textContent = calculator.calculate(calculation, lastInput.textContent[lastInput.textContent.length - 1]);
+    currentInput.textContent = '';
+    equalPressed = 1;
+    newOperation = 1;
+  }
+  if (equalPressed == 1 && inputValue != '=') {
+    lastInput.textContent += inputValue;
+    equalPressed = 0;
+  }
+  if (currentInput.textContent == '' && (lastInput.textContent[lastInput.textContent.length - 1] == '-' || lastInput.textContent[lastInput.textContent.length - 1] == '+' || lastInput.textContent[lastInput.textContent.length - 1] == '*' || lastInput.textContent[lastInput.textContent.length - 1] == '/') && inputValue != '=') {
+    lastInput.textContent = lastInput.textContent.slice(0, lastInput.textContent.length - 1) + inputValue;
+  } 
+  if(lastInput.textContent != '' && currentInput.textContent != '') {
+    let calculation = lastInput.textContent.concat(currentInput.textContent);
+    lastInput.textContent = calculator.calculate(calculation, lastInput.textContent[lastInput.textContent.length - 1]) + inputValue; 
+    currentInput.textContent = '';
+    // console.log(lastInput.textContent)
+  }
+  if(lastInput.textContent == '' && currentInput.textContent != '' && inputValue != '=') {
+      lastInput.textContent = currentInput.textContent + inputValue;
+      currentInput.textContent = '';
+  }
+  if(inputValue != '='){
+    newOperation = 1;
+  }
 }
 
 function clear() {
@@ -45,10 +86,10 @@ function clear() {
   currentInput.textContent = '';
   lastInput.textContent = '';
   newOperation = 1;
+  equalPressed = 0;
 }
 function deleteLast() {
     input = input.slice(0, input.length - 1);
-    // console.log(input);
     currentInput.textContent = currentInput.textContent.slice(0, currentInput.textContent.length - 1);
 }
 
@@ -103,4 +144,6 @@ buttons.item(16).addEventListener('click', () => {
   updateLastInput(buttons.item(16).value);
 });
 buttons.item(17).addEventListener('click', () => {
+  updateLastInput(buttons.item(17).value);
 });
+
