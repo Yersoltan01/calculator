@@ -115,14 +115,16 @@ buttons.item(6).addEventListener('click', () => {
   updateCurrentInput(buttons.item(6).value);
 });
 buttons.item(7).addEventListener('click', () => {
-  updateCurrentInput(buttons.item(7).value);});
+  updateCurrentInput(buttons.item(7).value);
+});
 buttons.item(8).addEventListener('click', () => {
   updateCurrentInput(buttons.item(8).value);
 });
 buttons.item(9).addEventListener('click', () => {
   updateLastInput(buttons.item(9).value);});
 buttons.item(10).addEventListener('click', () => {
-  updateCurrentInput(buttons.item(10).value);});
+  updateCurrentInput(buttons.item(10).value);
+});
 buttons.item(11).addEventListener('click', () => {
   updateCurrentInput(buttons.item(11).value);
 });
@@ -146,4 +148,91 @@ buttons.item(16).addEventListener('click', () => {
 buttons.item(17).addEventListener('click', () => {
   updateLastInput(buttons.item(17).value);
 });
-
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Backspace') {
+    deleteLast();
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit1') {
+    updateCurrentInput(buttons.item(10).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit2') {
+    updateCurrentInput(buttons.item(11).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit3') {
+    updateCurrentInput(buttons.item(10).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit4') {
+    updateCurrentInput(buttons.item(6).value); 
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit5') {
+   updateCurrentInput(buttons.item(7).value);
+    
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit6') {
+    updateCurrentInput(buttons.item(8).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit7') {
+    updateCurrentInput(buttons.item(2).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit8') {
+    updateCurrentInput(buttons.item(3).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit9') {
+    updateCurrentInput(buttons.item(4).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Digit0') {
+    updateCurrentInput(buttons.item(10).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Period') {
+    if (!currentInput.textContent.includes(buttons.item(15).value)) {
+      updateCurrentInput(buttons.item(15).value);
+    }
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Slash') {
+    updateLastInput(buttons.item(5).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'NumpadMultiply') {
+    updateLastInput(buttons.item(9).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'NumpadSubtract') {
+    updateLastInput(buttons.item(13).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'NumpadAdd') {
+    updateLastInput(buttons.item(16).value);
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Equal' || event.code == 'Enter') {
+    updateLastInput(buttons.item(17).value);
+  }
+});
